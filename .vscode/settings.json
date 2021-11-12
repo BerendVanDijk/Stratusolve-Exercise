@@ -1,0 +1,27 @@
+{
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    //"php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    //"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "team.showWelcomeMessage": false,
+    "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "qiskit-vscode.config.firstRun": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "mssql.connections": [
+        {
+            "server": "{{put-server-name-here}}",
+            "database": "{{put-database-name-here}}",
+            "user": "{{put-username-here}}",
+            "password": ""
+        }
+    ]
+}

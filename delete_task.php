@@ -12,8 +12,8 @@ include('../Stratusolve-Exercise/task.class.php');
 // Assignment: Implement this script
 
 $t= new Task();
-$t->Save($_POST['TaskName'],$_POST['TaskDescription'],$_POST['TaskId']);
 
+$t->Delete($_POST['TaskId']);
 
 
 

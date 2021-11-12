@@ -8,7 +8,11 @@
  * @subpackage ${NAME}
  * @author     johangriesel <info@stratusolve.com>
  */
+
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,21 +30,21 @@
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <form action="update_task.php" method="post">
+                <form action="update_task.php" method="post" >
                     <div class="row">
                         <div class="col-md-12" style="margin-bottom: 5px;;">
-                            <input id="InputTaskName" type="text" placeholder="Task Name" class="form-control">
+                            <input id="InputTaskName" type="text" placeholder="Task Name" class="form-control" name="TaskName">
                         </div>
                         <div class="col-md-12">
-                            <textarea id="InputTaskDescription" placeholder="Description" class="form-control"></textarea>
+                            <textarea id="InputTaskDescription" placeholder="Description" class="form-control" name="TaskDescription"></textarea>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="deleteTask" type="button" class="btn btn-danger">Delete Task</button>
-                <button id="saveTask" type="button" class="btn btn-primary">Save changes</button>
+                <button id="deleteTask" type="submit" class="btn btn-danger">Delete Task</button>
+                <button id="saveTask" type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -88,13 +92,36 @@
     });
     $('#saveTask').click(function() {
         //Assignment: Implement this functionality
-        alert('Save... Id:'+currentTaskId);
-        $('#myModal').modal('hide');
+        $taskName= $("#InputTaskName").val();
+        $TaskDescription=$("#InputTaskDescription").val();
+        $TaskId=currentTaskId;
+        console.log($taskName,$TaskDescription);
+        
+       
+        $.post("update_task.php",{TaskName:$taskName,TaskDescription:$TaskDescription,TaskId:$TaskId})
+        .done(function(){
+            updateTaskList();
+        })
+        .always(function(){
+            updateTaskList();
+        });
         updateTaskList();
+        
+        $('#myModal').modal('hide');
+        
     });
     $('#deleteTask').click(function() {
+        $TaskId=currentTaskId;
         //Assignment: Implement this functionality
-        alert('Delete... Id:'+currentTaskId);
+        $.post("delete_task.php",{TaskId:$TaskId})
+        .done(function(){
+            updateTaskList();
+        })
+        .always(function(){
+            updateTaskList();
+        });
+        updateTaskList();
+       // alert('Delete... Id:'+currentTaskId);
         $('#myModal').modal('hide');
         updateTaskList();
     });
@@ -104,5 +131,6 @@
         });
     }
     updateTaskList();
+    
 </script>
 </html>
